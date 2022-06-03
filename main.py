@@ -1,16 +1,20 @@
-# This is a sample Python script.
+import sys
+import pygame
+import Functions.DisplayFunctions as display
+import Constants.Colors as colors
+import Functions.StandartFunctions as standartFunc
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+screen = display.displayInit()
 
+import Constants.Fonts as fonts
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+while 1:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+        screen = display.fullscreenMode(event, screen)
+        screen.fill(colors.WHITE)
+        text = fonts.STANDART_FONT.render('Hello', True, colors.BLACK, colors.WHITE)
+        standartFunc.PrintText(text, 200, 200, screen)
+        pygame.display.update()
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
