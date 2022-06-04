@@ -2,26 +2,32 @@ import pygame
 from constants.display import Display
 
 
-def displayInit():
-    pygame.init()
-    screen = pygame.display.set_mode(Display.default_size)
-    return screen
+class ScreenTools:
+    def __init__(self):
+        self.fullscreen_mode = Display.fullscreen
+        self.screen = self.display_init()
 
-
-def fullscreenMode(event, currentScreen):
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_F11:
-            fullscreen = ~(Display.full_screen)
-            size = pygame.display.list_modes()[0]
-            screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
-            # После двойного нажатия F11 восстановить исходный размер интерфейса
-            if not fullscreen:
-                size = Display.default_size
-                new_screen = pygame.display.set_mode(size)
-            else:
-                new_screen = currentScreen
+    def display_init(self):
+        pygame.init()
+        if self.fullscreen_mode:
+            screen = pygame.display.set_mode(Display.default_size, pygame.FULLSCREEN)
         else:
-            new_screen = currentScreen
-    else:
-        new_screen = currentScreen
-    return new_screen
+            screen = pygame.display.set_mode(Display.default_size)
+        return screen
+
+    def switch_fullscreen(self):
+        if self.fullscreen_mode:
+            size = Display.default_size
+            new_screen = pygame.display.set_mode(size)
+        else:
+            size = pygame.display.list_modes()[0]
+            new_screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
+        self.fullscreen_mode = ~self.fullscreen_mode
+        return new_screen
+
+    def event_apply(self, event, screen):
+        new_screen = screen
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_F11:
+                new_screen = self.switch_fullscreen()
+        return new_screen

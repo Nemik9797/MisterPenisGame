@@ -1,20 +1,18 @@
 import sys
 import pygame
-from utils import display_functions
+from utils.display_functions import ScreenTools
 from utils.standart_functions import print_text
 from constants import Constant
 
 
-# standart_font = pygame.font.Font(, 36)
-# minotaure_font = pygame.font.Font(os.path.join(_cwd, 'constants', 'fonts', 'Minotaure.ttf'), 36)
-
-
-def main(screen):
+def main():
+    screen_tools = ScreenTools()
+    screen = screen_tools.screen
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            screen = display_functions.fullscreenMode(event, screen)
+            screen = screen_tools.event_apply(event, screen)
             screen.fill(Constant.color.white)
             print_text(
                 'Hello',
@@ -29,5 +27,4 @@ def main(screen):
 
 
 if __name__ == '__main__':
-    screen_init = display_functions.displayInit()
-    main(screen_init)
+    main()
