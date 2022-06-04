@@ -1,12 +1,6 @@
 import os
 from dataclasses import dataclass
 
-import pygame
-import utils.display_functions as display
-
-
-#screen = display.displayInit()
-
 
 @dataclass(frozen=True)
 class Font:
@@ -46,10 +40,7 @@ class Font:
     _cwd = os.getcwd()
 
     standart_font_size = 36
-    standart_font_file_path = os.path.join(_cwd, 'constants', 'fonts', 'ITCBLKAD.TTF')
+    standart_font_file_path = os.path.join(_cwd, "content", "fonts", "ITCBLKAD.TTF")
 
     minotaure_font_size = 36
-    minotaure_font_file_path = os.path.join(_cwd, 'constants', 'fonts', 'Minotaure.ttf')
-
-   # standart_font = pygame.font.Font(, 36)
-   # minotaure_font = pygame.font.Font(os.path.join(_cwd, 'constants', 'fonts', 'Minotaure.ttf'), 36)
+    minotaure_font_file_path = os.path.join(_cwd, "content", "fonts", "Minotaure.ttf")

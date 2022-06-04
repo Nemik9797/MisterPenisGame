@@ -1,8 +1,10 @@
 import sys
+
 import pygame
+
+from constants import Constant
 from utils.display_functions import ScreenTools
 from utils.standart_functions import print_text
-from constants import Constant
 
 
 def main():
@@ -15,16 +17,16 @@ def main():
             screen = screen_tools.event_apply(event, screen)
             screen.fill(Constant.color.white)
             print_text(
-                'Hello',
+                "Hello",
                 Constant.font.minotaure_font_file_path,
                 Constant.font.minotaure_font_size,
                 200,
                 200,
                 screen,
-                Constant.color.black
+                Constant.color.black,
             )
             pygame.display.update()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
