@@ -1,20 +1,33 @@
 import sys
 import pygame
-import Functions.DisplayFunctions as display
-import Constants.Colors as colors
-import Functions.StandartFunctions as standartFunc
+from utils import display_functions
+from utils.standart_functions import print_text
+from constants import Constant
 
-screen = display.displayInit()
 
-import Constants.Fonts as fonts
+# standart_font = pygame.font.Font(, 36)
+# minotaure_font = pygame.font.Font(os.path.join(_cwd, 'constants', 'fonts', 'Minotaure.ttf'), 36)
 
-while 1:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-        screen = display.fullscreenMode(event, screen)
-        screen.fill(colors.WHITE)
-        text = fonts.STANDART_FONT.render('Hello', True, colors.BLACK, colors.WHITE)
-        standartFunc.PrintText(text, 200, 200, screen)
-        pygame.display.update()
 
+def main(screen):
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            screen = display_functions.fullscreenMode(event, screen)
+            screen.fill(Constant.color.white)
+            print_text(
+                'Hello',
+                Constant.font.minotaure_font_file_path,
+                Constant.font.minotaure_font_size,
+                200,
+                200,
+                screen,
+                Constant.color.black
+            )
+            pygame.display.update()
+
+
+if __name__ == '__main__':
+    screen_init = display_functions.displayInit()
+    main(screen_init)
