@@ -1,9 +1,10 @@
-def PrintText(text, fontName,
-              x, y,
-              screen,
-              textColor, backgroundColor = None):
-    fontText = fontName.render(text, True, textColor, backgroundColor)
-    textRect = fontText.get_rect()
-    textRect.center = (x, y)
-    screen.blit(fontText, textRect)
+import pygame
 
+
+def print_text(text, font_file_path, font_size, x, y, screen, textColor, backgroundColor = None):
+
+    font = pygame.font.Font(font_file_path, font_size)
+    font_text = font.render(text, True, textColor, backgroundColor)
+    text_rect = font_text.get_rect()
+    text_rect.center = (x, y)
+    screen.blit(font_text, text_rect)
