@@ -1,3 +1,4 @@
+import os
 import sys
 
 import pygame
@@ -5,6 +6,8 @@ import pygame
 from constants import Constant
 from utils.display_functions import ScreenTools
 from utils.standart_functions import print_text
+from utils.main_menu_functions import background_fill
+from utils.main_menu_functions import create_main_menu
 
 
 def main():
@@ -16,15 +19,7 @@ def main():
                 sys.exit()
             screen = screen_tools.event_apply(event, screen)
             screen.fill(Constant.color.white)
-            print_text(
-                "Hello",
-                Constant.font.minotaure_font_file_path,
-                Constant.font.minotaure_font_size,
-                200,
-                200,
-                screen,
-                Constant.color.black,
-            )
+            create_main_menu(screen)
             pygame.display.update()
 
 
