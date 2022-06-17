@@ -39,10 +39,11 @@ class Font:
     # 'opensanssemibold', 'teamviewer15']
     _cwd = os.getcwd()
 
+    realy_big_font_size = 72
     big_font_size = 54
     standart_font_size = 36
     small_font_size = 18
 
-    standart_font_file_path = os.path.join(_cwd, "content", "fonts", "ITCBLKAD.TTF")
+    standart_font_file_path = os.path.join(_cwd, "content", "fonts", "appetite-italic.ttf")
     minotaure_font_file_path = os.path.join(_cwd, "content", "fonts", "Minotaure.ttf")
     cocuette_font_file_path = os.path.join(_cwd, "content", "fonts", "CoquetteC.ttf")

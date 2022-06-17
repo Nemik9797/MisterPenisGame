@@ -23,7 +23,7 @@ class ScreenTools:
             size = Display.default_size_window_screen
             new_screen = pygame.display.set_mode(size)
         else:
-            size = pygame.display.list_modes()[0]
+            size = Display.default_size_fullscreen
             new_screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
         self.fullscreen_mode = not self.fullscreen_mode
         return new_screen
