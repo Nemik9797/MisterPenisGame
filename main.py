@@ -1,20 +1,29 @@
+import os
 import sys
+
 import pygame
-import Functions.DisplayFunctions as display
-import Constants.Colors as colors
-import Functions.StandartFunctions as standartFunc
 
-screen = display.displayInit()
+from constants import Constant
+from utils.display_functions import ScreenTools
+from utils.standart_functions import print_text
+from utils.main_menu_functions import background_fill
+from utils.main_menu_functions import create_main_menu
+from utils.sounds_functions import play_background_sound
 
-import Constants.Fonts as fonts
 
-while 1:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-        screen = display.fullscreenMode(event, screen)
-        screen.fill(colors.WHITE)
-        text = fonts.STANDART_FONT.render('Hello', True, colors.BLACK, colors.WHITE)
-        standartFunc.PrintText(text, 200, 200, screen)
-        pygame.display.update()
+def main():
+    screen_tools = ScreenTools()
+    screen = screen_tools.screen
+    play_background_sound(Constant.sound.main_menu_sound)
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            screen = screen_tools.event_apply(event, screen)
+            screen.fill(Constant.color.white)
+            create_main_menu(screen, event)
+            pygame.display.update()
 
+
+if __name__ == "__main__":
+    main()
