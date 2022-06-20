@@ -56,7 +56,7 @@ def on_quit():
 
 
 def create_main_menu(screen, event):
-    background_fill("penis-background.jpg", screen)
+    background_fill("penis-background-redacted.png", screen)
     game_logo_fill("mrPenisGame.png", screen)
     for i, (text, handler) in enumerate((('Новая игра', on_play),
                                          ('Настройки', on_options),
